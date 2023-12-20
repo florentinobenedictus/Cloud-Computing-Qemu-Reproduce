@@ -33,6 +33,7 @@ br_active=$(echo "$active_bridges" | wc -l)
 echo "Total active bridges: $br_active\n"
 
 # Check active VMs
+echo "Active VMs:"
 for vm_dir in /home/work/vm*; do
     if [ -d "$vm_dir" ]; then
         vm_settings_file="$vm_dir/.vm-settings"

@@ -2,7 +2,7 @@
 
 # download VM image
 cd /script/vm-lib/images
-# sh download.sh
+sh download.sh
 
 # setup bridge
 cd /home/work && sh /script/bridge-init.sh

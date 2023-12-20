@@ -29,7 +29,7 @@ echo "Total VMs: $vm_total\n"
 echo "Active bridges:"
 active_bridges=$(ps ax | grep "dnsmasq" | grep -oP -- '--interface=\K[^ ]+')
 echo "$active_bridges" | sort -u
-br_active=$(echo "$active_bridges" | wc -l)
+br_active=$(echo "$active_bridges" | grep -c br)
 echo "Total active bridges: $br_active\n"
 
 # Check active VMs

@@ -1,0 +1,37 @@
+
+kind: Pod
+apiVersion: v1
+metadata:
+  name: webserver1-app
+  labels:
+    app: webserver1
+spec:
+  containers:
+  - command:
+    - "python3"
+    - "-m"
+    - "http.server"
+    - "9999"
+    - "-d"
+    - "/html"
+    image: python:3.13.0a1-alpine3.17
+    name: webserver1-app
+    volumeMounts:
+      - name: webserver1-volume
+        mountPath: "/html"
+  volumes:
+  - name: webserver1-volume
+    hostPath:
+      path: "/html"
+      type: Directory
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: webserver1-service
+spec:
+  selector:
+    app: webserver1
+  ports:
+  - port: 9999
+---
